@@ -7,22 +7,41 @@ let direction = null;
 let x = 100;
 let y = 250;
 
-function moveCharacter() {
+document.addEventListener("keydown", function (e) {
+  if (e.repeat) return;
+
+  if (e.key === "ArrowLeft") {
+    direction = "west";
+  }
+  if (e.key === "ArrowUp") {
+    direction = "north";
+  }
+  if (e.key === "ArrowRight") {
+    direction = "east";
+  }
+  if (e.key === "ArrowDown") {
+    direction = "south";
+  }
+});
+
+setInterval(function () {
   if (direction === "west") {
     x = x - 1;
   }
-  if (direction === "east") {
-    x = x + 1;
-  }
   if (direction === "north") {
     y = y + 1;
+  }
+  if (direction === "east") {
+    x = x + 1;
   }
   if (direction === "south") {
     y = y - 1;
   }
   character.style.left = x + "px";
   character.style.bottom = y + "px";
-}
+}, 1);
+
+// THIS COMMENT SHOULD NOT APPEAR IN SOLUTION BRANCH
 
 move(newImage("assets/tree.png")).to(200, 450);
 move(newImage("assets/pillar.png")).to(350, 250);
