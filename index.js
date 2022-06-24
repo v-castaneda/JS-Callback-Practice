@@ -7,6 +7,23 @@ let x = 100;
 let y = 250;
 move(character).to(100, 250);
 
+document.addEventListener("keydown", function (e) {
+  if (e.repeat) return;
+
+  if (e.key === "ArrowLeft") {
+    direction = "west";
+  }
+  if (e.key === "ArrowRight") {
+    direction = "east";
+  }
+  if (e.key === "ArrowDown") {
+    direction = "south";
+  }
+  if (e.key === "ArrowUp") {
+    direction = "north";
+  }
+});
+
 setInterval(function () {
   if (direction === "west") {
     x = x - 1;
@@ -18,7 +35,7 @@ setInterval(function () {
     y = y - 1;
   }
   if (direction === "north") {
-    y = y + 20;
+    y = y + 1;
   }
   character.style.left = x + "px";
   character.style.bottom = y + "px";
